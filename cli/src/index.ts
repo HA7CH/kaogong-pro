@@ -68,7 +68,6 @@ State:
 Meta:
   help        帮助
   version     版本
-  mcp         启动 MCP server (stdio)
   selftest    自检
   provinces   列出 31 省份
 `.trim();
@@ -283,10 +282,6 @@ const VERBS: Record<string, VerbFn> = {
     console.log(`✓ memory path: ${memoryPath()}`);
   },
 
-  async mcp() {
-    const { runMcpServer } = await import("./mcp.js");
-    await runMcpServer();
-  },
 };
 
 async function main() {

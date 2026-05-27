@@ -78,10 +78,6 @@ export default function Home() {
       <p className="section-label">Install</p>
       <pre className="code-block">npx @ha7ch/kaogong-pro@latest help</pre>
 
-      {/* MCP */}
-      <p className="section-label">MCP</p>
-      <pre className="code-block">claude mcp add kaogong-pro -- npx -y @ha7ch/kaogong-pro mcp</pre>
-
       {/* Footer */}
       <footer className="footer">
         <a href="https://github.com/HA7CH/kaogong-pro">GitHub</a>

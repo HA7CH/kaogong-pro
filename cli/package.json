@@ -1,6 +1,10 @@
 {
   "name": "@ha7ch/kaogong-pro",
   "version": "0.1.0",
+  "description": "用 Claude Code 规划你的考公选岗 — 国考岗位搜索、冲/稳/保推荐、零依赖 CLI",
+  "homepage": "https://kaogong.ha7ch.com",
+  "repository": "https://github.com/HA7CH/kaogong-pro",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "kaogong-pro": "dist/index.js"
@@ -10,6 +14,10 @@
     "data",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -21,5 +29,8 @@
     "@types/node": "^20.11.0",
     "tsx": "^4.7.0",
     "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

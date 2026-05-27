@@ -20,7 +20,7 @@ npx @ha7ch/kaogong-pro@latest help
 
 ## How it works
 
-`kaogong-pro` is a CLI + MCP server that grounds an AI conversation in
+`kaogong-pro` is a zero-dependency CLI that grounds an AI conversation in
 official Chinese civil service exam data. Claude drives the flow; the
 CLI is the data spine.
 

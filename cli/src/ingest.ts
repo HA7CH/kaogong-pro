@@ -74,7 +74,7 @@ function ingestCSV(csvPath: string, exam: ExamType): Position[] {
       bureau: get("用人司局"),
       inst_type: get("机构性质"),
       inst_level: get("机构层级"),
-      position_name: get("职位名称"),
+      position_name: get("职位名称") || get("招考职位"),
       position_attr: get("职位属性"),
       position_dist: get("职位分布"),
       position_desc: get("职位简介"),
