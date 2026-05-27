@@ -43,6 +43,19 @@ await expect("filter by major includes 不限", async () => {
   assert(results.length > 0, "should find positions matching 计算机 or 不限");
 });
 
+await expect("memory roundtrip", async () => {
+  const { loadMemory, setPrefs, addWatched, clearMemory } = await import("../src/memory.js");
+  clearMemory();
+  setPrefs({ score: 140, education: "本科", major: "计算机" });
+  const m = loadMemory();
+  assert(m.prefs.score === 140, "score should be 140");
+  assert(m.prefs.major === "计算机", "major should be 计算机");
+  addWatched("300110001001", 2026, "外交部翻译", "dream job");
+  const m2 = loadMemory();
+  assert(m2.watched.length === 1, "should have 1 watched");
+  clearMemory();
+});
+
 // --- Summary ---
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exitCode = failed > 0 ? 1 : 0;
