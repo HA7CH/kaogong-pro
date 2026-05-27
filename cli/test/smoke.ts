@@ -66,6 +66,12 @@ await expect("recommend returns buckets", async () => {
   assert("保" in result.buckets, "should have 保 bucket");
 });
 
+await expect("CLI selftest passes", async () => {
+  const { loadIndex } = await import("../src/index-loader.js");
+  const idx = loadIndex();
+  assert(idx.meta.total_positions > 0, "selftest: index should have positions");
+});
+
 // --- Summary ---
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exitCode = failed > 0 ? 1 : 0;
