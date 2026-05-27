@@ -2,14 +2,31 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "考公 Pro — 用 Claude Code 规划你的考公选岗",
-  description: "免费、开源的国考/省考岗位选择工具。CLI + MCP，零 token 设计。",
+  title: "kaogong.pro — 用 Claude Code 规划你的考公选岗",
+  description: "免费、开源的国考岗位选择工具。搜索 17000+ 岗位，冲/稳/保智能推荐。CLI + MCP，零 token 设计。",
+  metadataBase: new URL("https://kaogong.ha7ch.com"),
+  openGraph: {
+    title: "kaogong.pro",
+    description: "用 Claude Code 规划你的考公选岗",
+    url: "https://kaogong.ha7ch.com",
+  },
+  keywords: [
+    "考公", "国考", "公务员考试", "岗位选择", "考公 Pro",
+    "kaogong-pro", "CLI", "MCP", "Claude Code", "零token",
+    "冲稳保", "国考职位表", "npx @ha7ch/kaogong-pro",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh">
-      <body className="antialiased">{children}</body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Geist+Mono&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
