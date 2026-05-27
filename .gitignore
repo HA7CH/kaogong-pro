@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.next/
+cli/raw/
+*.xlsx
+.env*

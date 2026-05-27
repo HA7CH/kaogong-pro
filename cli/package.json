@@ -1,0 +1,25 @@
+{
+  "name": "@ha7ch/gongkao-pro",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "gongkao-pro": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "tsx test/smoke.ts",
+    "ingest": "tsx src/ingest.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}
