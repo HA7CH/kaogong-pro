@@ -1,4 +1,5 @@
 // cli/test/smoke.ts
+export {};
 let passed = 0;
 let failed = 0;
 
@@ -54,6 +55,15 @@ await expect("memory roundtrip", async () => {
   const m2 = loadMemory();
   assert(m2.watched.length === 1, "should have 1 watched");
   clearMemory();
+});
+
+await expect("recommend returns buckets", async () => {
+  const { recommend } = await import("../src/recommend.js");
+  const result = recommend({ score: 140 });
+  assert(typeof result.evaluated === "number", "should have evaluated count");
+  assert("冲" in result.buckets, "should have 冲 bucket");
+  assert("稳" in result.buckets, "should have 稳 bucket");
+  assert("保" in result.buckets, "should have 保 bucket");
 });
 
 // --- Summary ---
