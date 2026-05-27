@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const PROMPT = `跑 \`npx @ha7ch/gongkao-pro@latest help\` 把命令摸清楚，然后帮我选 2026 年国考岗位。
+const PROMPT = `跑 \`npx @ha7ch/kaogong-pro@latest help\` 把命令摸清楚，然后帮我选 2026 年国考岗位。
 
 先问我：学历、专业、政治面貌、意向省份/城市、是否有基层经验、模考成绩（行测+申论总分）。
 每条推荐都用 CLI 拉真实数据支撑——查历年竞争比、进面分数线、岗位限制条件。`;
@@ -73,19 +73,19 @@ export default function Home() {
       <section className="mb-12">
         <h2 className="text-sm font-mono text-[var(--muted)] uppercase tracking-widest mb-3">Install</h2>
         <pre className="bg-stone-100 border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
-          npx @ha7ch/gongkao-pro@latest help
+          npx @ha7ch/kaogong-pro@latest help
         </pre>
       </section>
 
       <section>
         <h2 className="text-sm font-mono text-[var(--muted)] uppercase tracking-widest mb-3">MCP</h2>
         <pre className="bg-stone-100 border border-[var(--border)] rounded-lg p-4 font-mono text-sm">
-          claude mcp add gongkao-pro -- npx -y @ha7ch/gongkao-pro mcp
+          claude mcp add kaogong-pro -- npx -y @ha7ch/kaogong-pro mcp
         </pre>
       </section>
 
       <footer className="mt-16 text-xs text-[var(--muted)] border-t border-[var(--border)] pt-6">
-        <a href="https://github.com/HA7CH/gongkao-pro" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
+        <a href="https://github.com/HA7CH/kaogong-pro" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
         <span className="mx-2">&middot;</span>
         <a href="https://ha7ch.com" className="hover:text-[var(--fg)] transition-colors">ha7ch.com</a>
       </footer>

@@ -10,10 +10,10 @@ import { isTty, formatPositions, formatRecommend } from "./format.js";
 const VERSION = "0.1.0";
 
 const HELP = `
-gongkao-pro v${VERSION}
+kaogong-pro v${VERSION}
 用 Claude Code 规划你的考公选岗。
 
-Usage: gongkao-pro <verb> [flags]
+Usage: kaogong-pro <verb> [flags]
 
 Core:
   search      搜索岗位
@@ -298,7 +298,7 @@ async function main() {
 
   const fn = VERBS[verb];
   if (!fn) {
-    console.error(`unknown verb: ${verb}. Run 'gongkao-pro help' for usage.`);
+    console.error(`unknown verb: ${verb}. Run 'kaogong-pro help' for usage.`);
     process.exitCode = 1;
     return;
   }

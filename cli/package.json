@@ -1,9 +1,9 @@
 {
-  "name": "@ha7ch/gongkao-pro",
+  "name": "@ha7ch/kaogong-pro",
   "version": "0.1.0",
   "type": "module",
   "bin": {
-    "gongkao-pro": "dist/index.js"
+    "kaogong-pro": "dist/index.js"
   },
   "files": [
     "dist",

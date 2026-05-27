@@ -6,7 +6,7 @@ import { matchPositions } from "./match.js";
 import { loadMemory, setPrefs, addWatched, clearMemory } from "./memory.js";
 import { resolveProvince, PROVINCES } from "./codes.js";
 
-const SERVER_INFO = { name: "gongkao-pro", version: "0.1.0" };
+const SERVER_INFO = { name: "kaogong-pro", version: "0.1.0" };
 const PROTOCOL_VERSION = "2025-06-18";
 
 type Tool = {

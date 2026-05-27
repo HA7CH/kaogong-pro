@@ -1,3 +1,3 @@
 export default function sitemap() {
-  return [{ url: "https://gongkao.ha7ch.com", lastModified: new Date() }];
+  return [{ url: "https://kaogong.ha7ch.com", lastModified: new Date() }];
 }

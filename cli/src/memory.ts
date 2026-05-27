@@ -29,7 +29,7 @@ export type MemoryState = {
   events: MemoryEvent[];
 };
 
-const DIR = join(homedir(), ".gongkaopro");
+const DIR = join(homedir(), ".kaogongpro");
 const FILE = join(DIR, "memory.json");
 
 function empty(): MemoryState {
