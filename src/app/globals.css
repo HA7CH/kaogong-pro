@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fafaf9;
+  --fg: #1c1917;
+  --muted: #78716c;
+  --border: #e7e5e4;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Noto Serif SC", serif;
+}
