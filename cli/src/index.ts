@@ -8,7 +8,7 @@ import { resolveProvince, PROVINCES, EXAM_TYPES, type ExamType } from "./codes.j
 import { isTty, formatPositions, formatRecommend } from "./format.js";
 import { loadRatio, buildRatioMap, lookupRatio, availableRatioYears } from "./ratio-loader.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.3.0";
 
 const HELP = `
 kaogong-pro v${VERSION}

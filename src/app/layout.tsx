@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "kaogong.pro — 用 Claude Code 规划你的考公选岗",
-  description: "免费、开源的国考岗位选择工具。搜索 60000+ 岗位（2024-2026 三年），冲/稳/保智能推荐。零依赖 CLI，零 token 设计。",
+  description: "免费、开源的国考岗位选择工具。搜索 120000+ 岗位（国考 2020-2026 七年 + 北京市考），冲/稳/保智能推荐。零依赖 CLI，零 token 设计。",
   metadataBase: new URL("https://kaogong.ha7ch.com"),
   openGraph: {
     title: "kaogong.pro",
