@@ -1,6 +1,6 @@
 // cli/src/recommend.ts
 import { loadIndex, filterPositions, type IndexFilter } from "./index-loader.js";
-import type { Position, Cutoff } from "./codes.js";
+import type { Position, Cutoff, ExamType } from "./codes.js";
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export type RecommendInput = {
   score: number;
+  exam?: ExamType;
   education?: string;
   major?: string;
   province?: string;
@@ -35,10 +36,10 @@ export type RecommendOutput = {
   };
 };
 
-function loadCutoff(year: number): Cutoff | null {
+function loadCutoff(year: number, exam: ExamType = "guokao"): Cutoff | null {
   const paths = [
-    join(__dirname, "..", "data", "cutoffs", `guokao-${year}.json`),
-    join(__dirname, "..", "..", "data", "cutoffs", `guokao-${year}.json`),
+    join(__dirname, "..", "data", "cutoffs", `${exam}-${year}.json`),
+    join(__dirname, "..", "..", "data", "cutoffs", `${exam}-${year}.json`),
   ];
   for (const p of paths) {
     if (!existsSync(p)) continue;
@@ -68,8 +69,10 @@ export function recommend(input: RecommendInput): RecommendOutput {
   const idx = loadIndex();
   const year = input.year ?? Math.max(...idx.meta.years);
 
+  const exam: ExamType = input.exam ?? "guokao";
   const filter: IndexFilter = {
     year,
+    exam,
     education: input.education,
     major: input.major,
     political: input.political,
@@ -79,8 +82,8 @@ export function recommend(input: RecommendInput): RecommendOutput {
   };
 
   const candidates = filterPositions(idx.positions, filter);
-  const cutoff = loadCutoff(year);
-  const prevCutoff = loadCutoff(year - 1);
+  const cutoff = loadCutoff(year, exam);
+  const prevCutoff = loadCutoff(year - 1, exam);
 
   const buckets: RecommendOutput["buckets"] = {
     "冲": [], "稳": [], "保": [], out: [], skipped: 0,

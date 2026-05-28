@@ -45,6 +45,7 @@ export function resolveProvince(input: string): string | null {
 
 export const EXAM_TYPES = {
   guokao: "国家公务员考试",
+  beijing: "北京市公务员考试",
 } as const;
 
 export type ExamType = keyof typeof EXAM_TYPES;

@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { gunzipSync } from "node:zlib";
 import { fileURLToPath } from "node:url";
-import type { PositionIndex, Position } from "./codes.js";
+import type { PositionIndex, Position, ExamType } from "./codes.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -36,6 +36,7 @@ export function loadIndex(): PositionIndex {
 
 export type IndexFilter = {
   year?: number;
+  exam?: ExamType;
   education?: string;
   major?: string;
   political?: string;
@@ -52,6 +53,7 @@ export function filterPositions(
 ): Position[] {
   return positions.filter((p) => {
     if (f.year && p.year !== f.year) return false;
+    if (f.exam && p.exam !== f.exam) return false;
     if (f.education && !p.education.includes(f.education)) return false;
     if (f.major && !matchMajor(p.major, f.major)) return false;
     if (f.political && f.political !== "不限" && p.political !== "不限" && !p.political.includes(f.political)) return false;

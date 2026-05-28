@@ -4,8 +4,9 @@ import { loadIndex, filterPositions } from "./index-loader.js";
 import { recommend } from "./recommend.js";
 import { matchPositions } from "./match.js";
 import { loadMemory, setPrefs, addWatched, logEvent, clearMemory, memoryPath } from "./memory.js";
-import { resolveProvince, PROVINCES } from "./codes.js";
+import { resolveProvince, PROVINCES, EXAM_TYPES, type ExamType } from "./codes.js";
 import { isTty, formatPositions, formatRecommend } from "./format.js";
+import { loadRatio, buildRatioMap, lookupRatio, availableRatioYears } from "./ratio-loader.js";
 
 const VERSION = "0.1.0";
 
@@ -17,6 +18,7 @@ Usage: kaogong-pro <verb> [flags]
 
 Core:
   search      搜索岗位
+                --exam <考试>  guokao/beijing  默认全部
                 --keyword <text>  职位名称/部门关键词
                 --education <学历>  本科/硕士/博士
                 --major <专业>  你的专业
@@ -43,8 +45,8 @@ Core:
                 --ids <id1,id2,...>
                 --year <年份>
 
-  hot         热门岗位 (招录多的部门)
-                --year <年份>  --top <N>
+  hot         热门岗位 (有报录比数据时按竞争比, 否则按部门 headcount)
+                --year <年份>  --top <N>  [--by ratio|applicants|dept]
 
   cold        冷门岗位 (招录多、限制严)
                 --year <年份>  --top <N>
@@ -56,6 +58,8 @@ Core:
 Data:
   cutoff      进面分数线
                 --year <年份>  [--id <职位代码>]
+  ratio       报录比 / 竞争比
+                --year <年份>  [--top <N>]  [--by ratio|applicants]
   stats       统计概览
                 --year <年份>
 
@@ -70,7 +74,14 @@ Meta:
   version     版本
   selftest    自检
   provinces   列出 31 省份
+  exams       列出支持的考试类型
 `.trim();
+
+function resolveExamFlag(flag?: string): ExamType | undefined {
+  if (!flag) return undefined;
+  if (flag in EXAM_TYPES) return flag as ExamType;
+  return undefined;
+}
 
 function parseFlags(args: string[]): { positional: string[]; flags: Record<string, string> } {
   const positional: string[] = [];
@@ -122,12 +133,17 @@ const VERBS: Record<string, VerbFn> = {
     printJson(Object.entries(PROVINCES).map(([id, p]) => ({ id, ...p })));
   },
 
+  exams() {
+    printJson(Object.entries(EXAM_TYPES).map(([id, name]) => ({ id, name })));
+  },
+
   search(flags) {
     const idx = loadIndex();
     const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
 
     let results = filterPositions(idx.positions, {
       year,
+      exam: resolveExamFlag(flags.exam),
       education: flags.education,
       major: flags.major,
       political: flags.political,
@@ -161,7 +177,10 @@ const VERBS: Record<string, VerbFn> = {
     const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
     const id = flags.id;
     if (!id) { console.error("--id required"); process.exitCode = 1; return; }
-    const found = idx.positions.find((p) => p.id === id && p.year === year);
+    const exam = resolveExamFlag(flags.exam);
+    const found = idx.positions.find((p) =>
+      p.id === id && p.year === year && (!exam || p.exam === exam),
+    );
     if (!found) { printJson({ ok: false, error: `position ${id} not found in ${year}` }); process.exitCode = 1; return; }
     printJson(found);
   },
@@ -172,6 +191,7 @@ const VERBS: Record<string, VerbFn> = {
 
     const result = recommend({
       score,
+      exam: resolveExamFlag(flags.exam),
       education: flags.education,
       major: flags.major,
       province: resolveProvinceFlag(flags.province),
@@ -206,33 +226,130 @@ const VERBS: Record<string, VerbFn> = {
     const idx = loadIndex();
     const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
     const top = Number(flags.top ?? 20);
-    const yearPositions = idx.positions.filter((p) => p.year === year);
-    const deptCounts = new Map<string, number>();
-    for (const p of yearPositions) deptCounts.set(p.dept_name, (deptCounts.get(p.dept_name) ?? 0) + 1);
-    const sorted = [...deptCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, top);
-    printJson(sorted.map(([dept, count]) => ({ dept, positions: count })));
+    const by = flags.by ?? "ratio"; // ratio | applicants | dept
+
+    const ratioFile = loadRatio(year);
+
+    // Explicit dept mode or no ratio data → fallback to dept headcount sort
+    if (by === "dept" || !ratioFile) {
+      const yearPositions = idx.positions.filter((p) => p.year === year);
+      const deptCounts = new Map<string, number>();
+      for (const p of yearPositions) deptCounts.set(p.dept_name, (deptCounts.get(p.dept_name) ?? 0) + 1);
+      const sorted = [...deptCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, top);
+      printJson({
+        mode: "dept",
+        ratio_data_available: Boolean(ratioFile),
+        year,
+        results: sorted.map(([dept, count]) => ({ dept, positions: count })),
+      });
+      return;
+    }
+
+    const list = by === "applicants"
+      ? ratioFile.top_positions_by_applicants
+      : ratioFile.top_positions_by_ratio;
+
+    printJson({
+      mode: by,
+      year,
+      snapshot_at: ratioFile.snapshot_at,
+      national_avg_ratio: ratioFile.national.avg_ratio,
+      results: list.slice(0, top),
+    });
   },
 
   cold(flags) {
     const idx = loadIndex();
     const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
     const top = Number(flags.top ?? 20);
-    const results = filterPositions(idx.positions, { year })
+
+    // Cold = 招录多 + 限制严, then de-prioritize positions known to be hot.
+    const ratioMap = buildRatioMap(year);
+    const hotKeys = new Set(ratioMap.keys());
+
+    const candidates = filterPositions(idx.positions, { year })
       .filter((p) => p.headcount >= 3 && p.major !== "不限" && p.political !== "不限")
+      .filter((p) => {
+        // Drop positions that appear in known-hot list.
+        const key = `${p.year}|${p.id}|${p.dept_name}|${p.position_name}`;
+        return !hotKeys.has(key);
+      })
       .sort((a, b) => b.headcount - a.headcount)
       .slice(0, top);
-    printJson(results);
+
+    printJson({
+      year,
+      ratio_data_available: ratioMap.size > 0,
+      results: candidates,
+    });
+  },
+
+  ratio(flags) {
+    const idx = loadIndex();
+    const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
+    const file = loadRatio(year);
+
+    if (!file) {
+      printJson({
+        ok: false,
+        error: `ratio data for ${year} not available`,
+        available_years: availableRatioYears(),
+      });
+      process.exitCode = 1;
+      return;
+    }
+
+    // --id lookup — composite key needs dept_name + position_name, so we resolve via index
+    if (flags.id) {
+      const map = buildRatioMap(year);
+      const positions = idx.positions.filter((p) => p.id === flags.id && p.year === year);
+      const matches = positions
+        .map((p) => ({
+          position: p,
+          ratio: lookupRatio(map, year, p.id, p.dept_name, p.position_name),
+        }))
+        .filter((m) => m.ratio);
+      printJson({
+        year,
+        id: flags.id,
+        matches,
+        note: matches.length === 0 ? "no public ratio data for this position (only top-10 are published)" : undefined,
+      });
+      return;
+    }
+
+    const top = Number(flags.top ?? 10);
+    const by = flags.by ?? "ratio";
+    const list = by === "applicants"
+      ? file.top_positions_by_applicants
+      : file.top_positions_by_ratio;
+
+    printJson({
+      year: file.year,
+      snapshot_at: file.snapshot_at,
+      snapshot_kind: file.snapshot_kind,
+      national: file.national,
+      top_by: by,
+      top: list.slice(0, top),
+      notes: file.notes,
+      sources: file.sources,
+    });
   },
 
   stats(flags) {
     const idx = loadIndex();
     const year = flags.year ? Number(flags.year) : Math.max(...idx.meta.years);
-    const yearPositions = idx.positions.filter((p) => p.year === year);
+    const exam = resolveExamFlag(flags.exam);
+    const yearPositions = idx.positions.filter((p) =>
+      p.year === year && (!exam || p.exam === exam),
+    );
     const totalHeadcount = yearPositions.reduce((s, p) => s + p.headcount, 0);
     printJson({
       year,
+      exam: exam ?? "all",
       total_positions: yearPositions.length,
       total_headcount: totalHeadcount,
+      by_exam: countBy(yearPositions as any[], "exam"),
       by_inst_type: countBy(yearPositions as any[], "inst_type"),
       by_education: countBy(yearPositions as any[], "education"),
       by_exam_category: countBy(yearPositions as any[], "exam_category"),
