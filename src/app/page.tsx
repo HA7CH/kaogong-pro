@@ -12,9 +12,9 @@ type Status = "live" | "building" | "none";
 type ExamRow = { name: string; positions: Status; cutoffs: Status; ratios: Status };
 
 const EXAMS: ExamRow[] = [
-  { name: "国考 2026", positions: "live", cutoffs: "building", ratios: "building" },
-  { name: "国考 2025", positions: "building", cutoffs: "building", ratios: "none" },
-  { name: "国考 2024", positions: "building", cutoffs: "building", ratios: "none" },
+  { name: "国考 2026", positions: "live", cutoffs: "live", ratios: "building" },
+  { name: "国考 2025", positions: "live", cutoffs: "live", ratios: "building" },
+  { name: "国考 2024", positions: "live", cutoffs: "live", ratios: "building" },
 ];
 
 function StatusIcon({ status }: { status: Status }) {
