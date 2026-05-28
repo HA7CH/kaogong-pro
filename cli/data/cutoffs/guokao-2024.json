@@ -1,0 +1,11 @@
+{
+  "year": 2024,
+  "exam": "guokao",
+  "national_lines": {
+    "central": { "total": 105, "xingce": 60 },
+    "provincial": { "total": 95, "xingce": 50 },
+    "western": { "total": 90, "xingce": 45 },
+    "special": { "total": 90, "xingce": 45 }
+  },
+  "notes": "Source: 国家公务员局 / 中国政府网 (gov.cn). central=中央机关及省级(含副省级)直属机构综合管理类; provincial=市(地)级和县(区)级直属机构综合管理类、行政执法类; western=西部地区和艰苦边远地区市(地)/县(区)级综合管理类、行政执法类、定向招录服务基层项目人员、退役士兵、非通用语职位; special=特殊专业职位(与 western 并列同档)。专业科目笔试合格分数线(金融监管总局、证监会、公安) = 45"
+}

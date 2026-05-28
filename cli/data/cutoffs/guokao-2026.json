@@ -1,0 +1,11 @@
+{
+  "year": 2026,
+  "exam": "guokao",
+  "national_lines": {
+    "central": { "total": 105, "xingce": 60 },
+    "provincial": { "total": 95, "xingce": 50 },
+    "western": { "total": 90, "xingce": 45 },
+    "special": { "total": 90, "xingce": 45 }
+  },
+  "notes": "Source: 国家公务员局 / 新华网, 2026-01-15 公布。专业科目笔试合格分数线(金融监管总局、证监会、公安) = 45"
+}

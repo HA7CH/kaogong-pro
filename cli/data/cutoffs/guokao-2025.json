@@ -1,0 +1,11 @@
+{
+  "year": 2025,
+  "exam": "guokao",
+  "national_lines": {
+    "central": { "total": 105, "xingce": 60 },
+    "provincial": { "total": 95, "xingce": 50 },
+    "western": { "total": 90, "xingce": 45 },
+    "special": { "total": 90, "xingce": 45 }
+  },
+  "notes": "Source: 国家公务员局 (ncss.cn / scs.gov.cn), 2025-01-15 公布。western 适用 15 个省区市:山西、内蒙古、吉林、黑龙江、广西、重庆、四川、贵州、云南、西藏、陕西、甘肃、青海、宁夏、新疆。专业科目笔试合格分数线(金融监管总局、证监会、公安) = 45"
+}
