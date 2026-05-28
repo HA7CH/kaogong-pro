@@ -1,0 +1,37 @@
+{
+  "year": 2026,
+  "exam": "guokao",
+  "snapshot_at": "2025-10-26",
+  "snapshot_kind": "registration_closed",
+  "sources": [
+    "https://finance.sina.com.cn/tech/roll/2025-10-26/doc-infvfpzn0671197.shtml",
+    "https://www.huxiu.com/article/4811108.html",
+    "https://finance.ifeng.com/c/8niKKpFI7zE",
+    "https://zhuanlan.zhihu.com/p/1966526880837534268"
+  ],
+  "national": {
+    "total_applicants": 3515251,
+    "qualified_applicants": 3718000,
+    "total_headcount": 38119,
+    "total_positions": null,
+    "avg_ratio": 98,
+    "max_ratio": 6470,
+    "max_ratio_position": "国家移民管理局瑞丽遣返中心 执行队一级警长及以下"
+  },
+  "top_positions_by_applicants": [],
+  "top_positions_by_ratio": [],
+  "regional_qualified": [
+    { "province": "广东", "qualified": 290000 },
+    { "province": "北京", "qualified": 218000 },
+    { "province": "山东", "qualified": 193000 },
+    { "province": "河南", "qualified": 171000 },
+    { "province": "云南", "qualified": 170000 }
+  ],
+  "segment_ratios": [
+    { "segment": "不限应届", "avg_ratio": 150 },
+    { "segment": "限应届", "avg_ratio": 67 },
+    { "segment": "市级以上", "avg_ratio": 97 },
+    { "segment": "县区级及以下", "avg_ratio": 94 }
+  ],
+  "notes": "2026 报名第 8 天过审 170 万+，最高竞争比那个时点为 3421:1。最终公布过审 371.8 万人，平均报录比 98:1，七年来首次缩招。per-position top10 尚未发布完整 (查到只有 #1 位 6470:1) — 仅宏观数据。"
+}

@@ -1,0 +1,46 @@
+{
+  "year": 2025,
+  "exam": "guokao",
+  "snapshot_at": "2024-10-25",
+  "snapshot_kind": "registration_closed",
+  "sources": [
+    "https://www.gwyzwb.com/bmrs/2025.html",
+    "https://m.jiemian.com/article/11878929.html",
+    "https://www.51ldb.com/shsldb/zc/content/0192be4e2f6ac0010000d7c90f012edc.html",
+    "https://cn.chinadaily.com.cn/a/202412/01/WS674bdbdba310b59111da6685.html"
+  ],
+  "national": {
+    "total_applicants": 3258274,
+    "qualified_applicants": 3416000,
+    "total_headcount": 39721,
+    "total_positions": 20810,
+    "avg_ratio": 86,
+    "max_ratio": 16702,
+    "max_ratio_position": "中华职业教育社 联络部一级主任科员及以下"
+  },
+  "top_positions_by_applicants": [
+    { "rank": 1, "id": "100310222001", "year": 2025, "dept_name": "中华职业教育社", "position_name": "联络部一级主任科员及以下", "work_location": "北京", "headcount": 1, "applicants": 15678, "ratio": 15678 },
+    { "rank": 2, "id": "400110110002", "year": 2025, "dept_name": "生态环境部西南核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "work_location": "四川", "headcount": 2, "applicants": 6877, "ratio": 3439 },
+    { "rank": 3, "id": "400110116001", "year": 2025, "dept_name": "生态环境部华南核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "work_location": "广东", "headcount": 6, "applicants": 5937, "ratio": 990 },
+    { "rank": 4, "id": "300130001043", "year": 2025, "dept_name": "广西出入境边防检查总站", "position_name": "爱店出入境边防检查站一级警长及以下（二）", "work_location": "广西", "headcount": 2, "applicants": 4597, "ratio": 2299 },
+    { "rank": 5, "id": "400110002003", "year": 2025, "dept_name": "国家知识产权局", "position_name": "审查部门（三）一级主任科员及以下", "work_location": "北京", "headcount": 1, "applicants": 4400, "ratio": 4400 },
+    { "rank": 6, "id": "300110008006", "year": 2025, "dept_name": "国家税务总局北京市税务局", "position_name": "一级行政执法员（六）", "work_location": "北京", "headcount": 2, "applicants": 4117, "ratio": 2059 },
+    { "rank": 7, "id": "300130265022", "year": 2025, "dept_name": "深圳出入境边防检查总站", "position_name": "边检站一级警长及以下（十八）", "work_location": "广东", "headcount": 5, "applicants": 3874, "ratio": 775 },
+    { "rank": 8, "id": "300110009024", "year": 2025, "dept_name": "国家税务总局湖北省税务局", "position_name": "一级行政执法员（十二）", "work_location": "湖北", "headcount": 2, "applicants": 3698, "ratio": 1849 },
+    { "rank": 9, "id": "300130001014", "year": 2025, "dept_name": "西藏出入境边防检查总站", "position_name": "林芝边境管理支队一级警长及以下（十四）", "work_location": "西藏", "headcount": 1, "applicants": 3454, "ratio": 3454 },
+    { "rank": 10, "id": "300110012003", "year": 2025, "dept_name": "国家税务总局北京市税务局", "position_name": "一级行政执法员（三）", "work_location": "北京", "headcount": 3, "applicants": 3283, "ratio": 1094 }
+  ],
+  "top_positions_by_ratio": [
+    { "rank": 1, "id": "100310222001", "year": 2025, "dept_name": "中华职业教育社", "position_name": "联络部一级主任科员及以下", "headcount": 1, "applicants": 16702, "ratio": 16702 },
+    { "rank": 2, "id": "400110002003", "year": 2025, "dept_name": "国家知识产权局", "position_name": "审查部门（三）一级主任科员及以下", "headcount": 1, "applicants": 4400, "ratio": 4400 },
+    { "rank": 3, "id": "300130001014", "year": 2025, "dept_name": "西藏出入境边防检查总站", "position_name": "林芝边境管理支队一级警长及以下（十四）", "headcount": 1, "applicants": 3454, "ratio": 3454 },
+    { "rank": 4, "id": "400110110002", "year": 2025, "dept_name": "生态环境部西南核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "headcount": 2, "applicants": 6877, "ratio": 3439 },
+    { "rank": 5, "id": "300130001043", "year": 2025, "dept_name": "广西出入境边防检查总站", "position_name": "爱店出入境边防检查站一级警长及以下（二）", "headcount": 2, "applicants": 4597, "ratio": 2299 },
+    { "rank": 6, "id": "300110008006", "year": 2025, "dept_name": "国家税务总局北京市税务局", "position_name": "一级行政执法员（六）", "headcount": 2, "applicants": 4117, "ratio": 2059 },
+    { "rank": 7, "id": "300110009024", "year": 2025, "dept_name": "国家税务总局湖北省税务局", "position_name": "一级行政执法员（十二）", "headcount": 2, "applicants": 3698, "ratio": 1849 },
+    { "rank": 8, "id": "300110012003", "year": 2025, "dept_name": "国家税务总局北京市税务局", "position_name": "一级行政执法员（三）", "headcount": 3, "applicants": 3283, "ratio": 1094 },
+    { "rank": 9, "id": "400110116001", "year": 2025, "dept_name": "生态环境部华南核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "headcount": 6, "applicants": 5937, "ratio": 990 },
+    { "rank": 10, "id": "300130265022", "year": 2025, "dept_name": "深圳出入境边防检查总站", "position_name": "边检站一级警长及以下（十八）", "headcount": 5, "applicants": 3874, "ratio": 775 }
+  ],
+  "notes": "max_ratio_position 通过资格审查 16702 人；max_ratio 为官方公布最终数；top_positions 仅前 10，其余岗位无公开 ratio。"
+}

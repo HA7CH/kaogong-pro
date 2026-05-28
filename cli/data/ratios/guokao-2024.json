@@ -1,0 +1,51 @@
+{
+  "year": 2024,
+  "exam": "guokao",
+  "snapshot_at": "2023-10-25",
+  "snapshot_kind": "registration_closed",
+  "sources": [
+    "https://www.gwyzwb.com/bmrs/2024.html",
+    "http://www.news.cn/politics/2023-10/25/c_1129936352.htm",
+    "https://m.gwy.com/gjgwy/331363.html",
+    "https://m.gwy.com/gjgwy/350403.html",
+    "https://www.thepaper.cn/newsDetail_forward_25046037"
+  ],
+  "national": {
+    "total_applicants": 2913891,
+    "qualified_applicants": 3033000,
+    "total_headcount": 39561,
+    "total_positions": 18948,
+    "avg_ratio": 77,
+    "max_ratio": 3572,
+    "max_ratio_position": "国家统计局宁夏调查总队 业务处室一级主任科员及以下"
+  },
+  "top_positions_by_applicants": [
+    { "rank": 1, "id": "200110001008", "year": 2024, "dept_name": "外交部", "position_name": "理工类", "work_location": "北京", "headcount": 18, "applicants": 5496, "ratio": 305 },
+    { "rank": 2, "id": "400110002002", "year": 2024, "dept_name": "国家知识产权局", "position_name": "审查部门（一）一级主任科员及以下", "work_location": "北京", "headcount": 2, "applicants": 4892, "ratio": 2446 },
+    { "rank": 3, "id": "300110001003", "year": 2024, "dept_name": "国家税务总局宁波市税务局", "position_name": "一级行政执法员（三）", "work_location": "浙江", "headcount": 5, "applicants": 4033, "ratio": 807 },
+    { "rank": 4, "id": "400110112001", "year": 2024, "dept_name": "生态环境部西北核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "work_location": "甘肃", "headcount": 8, "applicants": 3860, "ratio": 483 },
+    { "rank": 5, "id": "400110130011", "year": 2024, "dept_name": "国家统计局宁夏调查总队", "position_name": "宁夏调查总队业务处室一级主任科员及以下（3）", "work_location": "宁夏", "headcount": 1, "applicants": 3679, "ratio": 3572 },
+    { "rank": 6, "id": "300130001022", "year": 2024, "dept_name": "西藏出入境边防检查总站", "position_name": "日喀则边境管理支队一级警长及以下（二十一）", "work_location": "西藏", "headcount": 2, "applicants": 3595, "ratio": 1798 },
+    { "rank": 7, "id": "400110108002", "year": 2024, "dept_name": "生态环境部华东核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "work_location": "上海", "headcount": 4, "applicants": 3395, "ratio": 849 },
+    { "rank": 8, "id": "300110003005", "year": 2024, "dept_name": "国家税务总局陕西省税务局", "position_name": "一级行政执法员（五）", "work_location": "陕西", "headcount": 3, "applicants": 3015, "ratio": 1005 },
+    { "rank": 9, "id": "300110001001", "year": 2024, "dept_name": "国家税务总局广东省税务局", "position_name": "一级行政执法员（一）", "work_location": "广东", "headcount": 4, "applicants": 2951, "ratio": 738 },
+    { "rank": 10, "id": "400110011001", "year": 2024, "dept_name": "国家知识产权局", "position_name": "药物领域一级主任科员及以下", "work_location": "北京", "headcount": 2, "applicants": 2904, "ratio": 1452 }
+  ],
+  "top_positions_by_ratio": [
+    { "rank": 1, "id": "400110130011", "year": 2024, "dept_name": "国家统计局宁夏调查总队", "position_name": "宁夏调查总队业务处室一级主任科员及以下（3）", "headcount": 1, "applicants": 3572, "ratio": 3572 },
+    { "rank": 2, "id": "400110002002", "year": 2024, "dept_name": "国家知识产权局", "position_name": "审查部门（一）一级主任科员及以下", "headcount": 2, "applicants": 4892, "ratio": 2446 },
+    { "rank": 3, "id": "300130001022", "year": 2024, "dept_name": "西藏出入境边防检查总站", "position_name": "日喀则边境管理支队一级警长及以下（二十一）", "headcount": 2, "applicants": 3595, "ratio": 1798 },
+    { "rank": 4, "id": "400110011001", "year": 2024, "dept_name": "国家知识产权局", "position_name": "药物领域一级主任科员及以下", "headcount": 2, "applicants": 2904, "ratio": 1452 },
+    { "rank": 5, "id": "300110003005", "year": 2024, "dept_name": "国家税务总局陕西省税务局", "position_name": "一级行政执法员（五）", "headcount": 3, "applicants": 3015, "ratio": 1005 },
+    { "rank": 6, "id": "400110108002", "year": 2024, "dept_name": "生态环境部华东核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "headcount": 4, "applicants": 3395, "ratio": 849 },
+    { "rank": 7, "id": "300110001003", "year": 2024, "dept_name": "国家税务总局宁波市税务局", "position_name": "一级行政执法员（三）", "headcount": 5, "applicants": 4033, "ratio": 807 },
+    { "rank": 8, "id": "300110001001", "year": 2024, "dept_name": "国家税务总局广东省税务局", "position_name": "一级行政执法员（一）", "headcount": 4, "applicants": 2951, "ratio": 738 },
+    { "rank": 9, "id": "400110112001", "year": 2024, "dept_name": "生态环境部西北核与辐射安全监督站", "position_name": "核与辐射安全监督岗位一级主任科员及以下", "headcount": 8, "applicants": 3860, "ratio": 483 },
+    { "rank": 10, "id": "200110001008", "year": 2024, "dept_name": "外交部", "position_name": "理工类", "headcount": 18, "applicants": 5496, "ratio": 305 }
+  ],
+  "system_ratios": [
+    { "system": "生态环境", "avg_ratio": 302.5 },
+    { "system": "知识产权局", "avg_ratio": 191 }
+  ],
+  "notes": "max_ratio_position 通过资格审查 3572 人；max_ratio 为官方公布最终数；top_positions_by_ratio 中部分岗位的 ratio 是 (top10 applicants / headcount) 近似值，并非官方排名；only top10 hot positions are public, 其余岗位无公开 ratio。"
+}

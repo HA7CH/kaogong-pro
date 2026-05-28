@@ -397,6 +397,12 @@ const VERBS: Record<string, VerbFn> = {
     const idx = loadIndex();
     console.log(`✓ index loaded: ${idx.meta.total_positions} positions, years ${idx.meta.years.join(",")}`);
     console.log(`✓ memory path: ${memoryPath()}`);
+    const ratioYears = availableRatioYears();
+    if (ratioYears.length > 0) {
+      console.log(`✓ ratio data: years ${ratioYears.join(",")}`);
+    } else {
+      console.log(`  (no ratio data found)`);
+    }
   },
 
 };
